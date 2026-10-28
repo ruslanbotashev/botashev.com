@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#eaeae2"/>
+  <text x="70" y="82" font-family="Helvetica,Arial,sans-serif" font-size="23" fill="#232720">Ruslan Botashev</text>
+  <text x="1130" y="82" text-anchor="end" font-family="monospace" font-size="13" fill="#63685d">SOFTWARE · INFRASTRUCTURE · AUTOMATION</text>
+  <path d="M70 110H1130" stroke="#bfc5b6"/>
+  <text x="63" y="290" font-family="Helvetica,Arial,sans-serif" font-size="122" letter-spacing="-8" fill="#232720">From idea.</text>
+  <text x="63" y="430" font-family="Georgia,serif" font-size="122" font-style="italic" letter-spacing="-7" fill="#232720">To production.</text>
+  <g transform="translate(967 320)"><circle r="114" fill="#232720"/><g fill="none" stroke="#a0ba76" opacity=".6"><circle r="82"/><ellipse rx="82" ry="35" transform="rotate(35)"/><ellipse rx="82" ry="35" transform="rotate(-35)"/><ellipse rx="35" ry="82"/><path d="M-82 0H82M0-82V82"/></g><g fill="#d2ef98"><circle cx="-66" cy="-48" r="4"/><circle cx="69" cy="45" r="4"/><circle cx="0" cy="-82" r="4"/><circle cx="-28" cy="69" r="4"/></g></g>
+  <text x="70" y="557" font-family="monospace" font-size="18" fill="#63685d">SELECTED WORK FROM SALESFORCE · AWS · IBM · ARBITAL · AEON</text>
+  <text x="1130" y="592" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-size="18" fill="#232720">botashev.com ↗</text>
+</svg>
