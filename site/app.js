@@ -1,4 +1,4 @@
-import { cases } from './case-data.js';
+import { cases } from './case-data.js?v=8be102aeb45d';
 import { initSystems } from './systems.js';
 
 const root = document.documentElement;
