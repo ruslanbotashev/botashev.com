@@ -265,3 +265,11 @@ html:not(.js) .copy-email{display:none}
 .ibm-reconcile strong{font-size:19px;font-weight:500;letter-spacing:-.035em}
 .ibm-constraint{font:9px/1.5 var(--mono);letter-spacing:.02em;text-align:center;color:#627256}
 @media(max-width:600px){.ibm-case-mark{top:48px;width:130px;height:48px}.ibm-case-mark img{width:185px}.ibm-diagram{top:120px;bottom:45px;gap:9px}.ibm-sources{gap:14px}.ibm-sources>div{padding:10px 6px}.ibm-path{font-size:16px;line-height:14px}.ibm-reconcile{padding:13px 8px}.ibm-reconcile strong{font-size:17px}.ibm-constraint{font-size:8px}}
+
+/* Direct paths from each role to its selected work. */
+.timeline-work{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);max-width:650px}
+.timeline-work-label{font:10px/1.6 var(--mono);letter-spacing:.045em;text-transform:uppercase;color:var(--muted)}
+.timeline-work ul{list-style:none;margin:7px 0 0;padding:0}
+.timeline-work a{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:44px;padding:9px 0;font-size:14px;line-height:1.5}
+.timeline-work a:hover{text-decoration:underline;text-underline-offset:4px}
+.timeline-work a>span{flex-shrink:0}
