@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#eaeae2">
-  <title>Guarded Releases for Salesforce Edge — Ruslan Botashev</title>
+  <title>AI-Assisted Guarded Releases for Salesforce Edge — Ruslan Botashev</title>
   <meta name="description" content="Let any team member own a release. Make the process safer with AI-assisted checks.">
   <link rel="canonical" href="https://botashev.com/work/salesforce-guarded-releases/">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Guarded Releases for Salesforce Edge — Ruslan Botashev">
+  <meta property="og:title" content="AI-Assisted Guarded Releases for Salesforce Edge — Ruslan Botashev">
   <meta property="og:description" content="Let any team member own a release. Make the process safer with AI-assisted checks.">
   <meta property="og:url" content="https://botashev.com/work/salesforce-guarded-releases/">
   <meta property="og:image" content="https://botashev.com/assets/social-card.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../styles.css?v=c36d4fd6c6c1">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","@id":"https://botashev.com/work/salesforce-guarded-releases/#case","headline":"Guarded Releases for Salesforce Edge","description":"Let any team member own a release. Make the process safer with AI-assisted checks.","mainEntityOfPage":"https://botashev.com/work/salesforce-guarded-releases/","author":{"@id":"https://botashev.com/#person"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","@id":"https://botashev.com/work/salesforce-guarded-releases/#case","headline":"AI-Assisted Guarded Releases for Salesforce Edge","description":"Let any team member own a release. Make the process safer with AI-assisted checks.","mainEntityOfPage":"https://botashev.com/work/salesforce-guarded-releases/","author":{"@id":"https://botashev.com/#person"}}</script>
 </head>
 <body class="case-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -26,7 +26,7 @@
   <main id="main">
     <article id="case-content" aria-labelledby="case-title">
       <p class="eyebrow">Salesforce / EdgeFlow release engineering</p>
-      <h1 id="case-title">Guarded releases<br>for Salesforce Edge.</h1>
+      <h1 id="case-title">AI-assisted guarded releases<br>for Salesforce Edge.</h1>
       <p class="case-lead">Let any team member own a release. Make the process safer with AI-assisted checks.</p>
       <h2>Release ownership was the bottleneck</h2><p>The Salesforce Edge release process was complex enough that only members of the operations team could run it. A dedicated release owner spent a two-week rotation focused almost entirely on releases.</p><p>My primary goal was to make release ownership a team capability: any team member should be able to lead the process with AI assistance. The second goal was to make releases safer. Edge is Salesforce's tier-0 traffic entry point, where a faulty rollout could disrupt Salesforce globally.</p><h2>A shared, AI-assisted release process</h2><p>I originated and implemented the release automation as a major use case of <a data-case="edgeflow" href="../edgeflow/">EdgeFlow, the general-purpose automation platform I built for engineering operations</a>. The system automated preparation and builds, coordinated staged deployments and kept release status, reports and change-owner testing records together in Slack threads and tracking canvases.</p><p>The orchestration covered 46 deployment groups across development, pre-production, canary and production. Separate workflows handled Linux hosts running Docker Compose and public-cloud environments running Kubernetes. A release owner remained accountable for the process, checking that workflows ran and the release progressed correctly.</p><h2>Safety across an overwhelming amount of information</h2><p>Each deployment group involved approximately 100 metrics, alongside logs and historical comparisons. Reviewing that volume manually made it easy to miss a metric or a relevant log signal, while comparisons also required keeping previous periods available.</p><p>Automation collected the metrics, generated reports and compared post-deployment behavior with immediate pre-deployment, prior-day and prior-week baselines. AI agents assessed release health and whether progression to the next region was appropriate.</p><p>AI assessment, staged progression and human change-owner validation remained distinct controls. If PagerDuty incidents appeared after deployment, automation stopped progression and notified the on-call engineer. Recurring checks continued through soak periods, so safety checks were part of the release process rather than a sequence of dashboards someone had to remember to inspect.</p><h2>The result: shared ownership, safer releases, less manual work</h2><p>Any team member could now own the release process with AI assistance, rather than relying on an operations specialist. The team gained a safer, repeatable process while retaining a named owner and human checks where required.</p><div class="case-result"><p><strong>Approximately 60 hours → 2 hours of hands-on work per two-week release-owner rotation.</strong></p><small>Approximate effort for the person overseeing releases during the rotation.</small></div><p>An engineer no longer had to spend the rotation working almost exclusively on releases. The owner oversaw the automated process instead of manually collecting and reviewing its information.</p><p>Separately, elapsed rollout time decreased from four weeks to three.</p><p><a data-case="edgeflow" href="../edgeflow/">Explore the EdgeFlow platform behind this release process</a>.</p>
       <p class="case-tags">Release engineering · EdgeFlow · Production AI · Docker Compose · Kubernetes</p>
