@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaeae2">
+  <title>The software that ran an ISP — Ruslan Botashev</title>
+  <meta name="description" content="Connect a customer&#39;s service, the business workflow and the network that delivers it.">
+  <link rel="canonical" href="https://botashev.com/work/arbital-software/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The software that ran an ISP — Ruslan Botashev">
+  <meta property="og:description" content="Connect a customer&#39;s service, the business workflow and the network that delivers it.">
+  <meta property="og:url" content="https://botashev.com/work/arbital-software/">
+  <meta property="og:image" content="https://botashev.com/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../styles.css?v=c36d4fd6c6c1">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","@id":"https://botashev.com/work/arbital-software/#case","headline":"The software that ran an ISP","description":"Connect a customer's service, the business workflow and the network that delivers it.","mainEntityOfPage":"https://botashev.com/work/arbital-software/","author":{"@id":"https://botashev.com/#person"}}</script>
+</head>
+<body class="case-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="../../" aria-label="Ruslan Botashev, home"><span class="brand-mark" aria-hidden="true">rb<span>↗</span></span><span>Ruslan<br>Botashev</span></a>
+    <a class="text-link" href="../../#work">← Selected work</a>
+  </header>
+  <main id="main">
+    <article id="case-content" aria-labelledby="case-title">
+      <p class="eyebrow">Arbital / Integrated operating platform</p>
+      <h1 id="case-title">The software<br>that ran an ISP</h1>
+      <p class="case-lead">Connect a customer&#39;s service, the business workflow and the network that delivers it.</p>
+      <h2>One business, connected through software</h2><p>Running Arbital meant keeping customer records, installation work, billing and network access in step. I built and led development of an integrated operating platform, primarily in PHP, that connected those parts of the business.</p><p>The platform extended UTM5, the billing engine, through its interfaces and joined billing state with our own customer, building, device and workflow records. Employees could work through the subscriber's service context, while software carried the changes into the systems delivering it.</p><h2>From an installation request to an active service</h2><p>An employee started subscriber activation. The application created the customer and account in UTM5, established the billing period and tariff, and configured the Internet service with its IP and MAC identity.</p><p>The same workflow then looked for the installation request matching the building and apartment. One unambiguous match could be closed automatically. If several requests matched, the application presented them for staff to resolve.</p><p>The workflow connected a commercial event to its operational state: who the customer was, which service they had, how the network identified them and whether the installation work was complete. The employee initiated activation; the platform coordinated the backend operations.</p><h2>Reconcile a payment across independent systems</h2><p>A payment callback arrived with a provider's transaction identifier. The application checked that identity against its pending and completed records and the transactions already recorded in UTM5.</p><p>That comparison let the handler recognize an existing billing transaction and reconcile its local completion and billing-reference fields. When a new payment was needed, it called the billing interface, stored the result and sent the customer notification after success.</p><p>The integration made external payment identity, local processing state and billing state part of the same workflow. It included duplicate checks and recovery paths for records that needed reconciliation.</p><h2>Turn subscriber policy into network behavior</h2><p>Customer and tariff records also supplied the desired network policy. A reconciliation daemon compared active and blocked subscriber sets with shaper tables and access-control lists, then applied the differences through device connections.</p><p>Shared adapters handled the command and configuration differences across switch families. The application selected an adapter from device metadata and used common operations for configuration, MAC queries, diagnostics and saving changes.</p><p>For traffic shaping, software calculated separate incoming and outgoing coefficients from observed activity and adjusted tariff-specific IPFW pipe rates. For subscriber identity, it compared authorized IP/MAC bindings with observed ARP state, installed restrictions for violations and removed corrected or expired blocks.</p><h2>Keep decisions and execution connected</h2><p>Staff actions and automated reconciliation had different roles. Employees initiated activation and selected operational changes; software performed the backend steps and reconciled subscriber policy with network state. Ambiguous installation matches stayed visible for a person to decide.</p><div class="case-result"><p><strong>Customer records, billing, staff workflows and network access in one operating platform.</strong></p><small>These are selected workflows from the broader system I built and led at Arbital.</small></div><p><a data-case="arbital" href="../arbital/">Read the wider Arbital story</a>, from the first customer to network architecture, service launches and production recovery.</p>
+      <p class="case-tags">PHP · Systems integration · Billing · Provisioning · Network control · Technical leadership</p>
+      
+    </article>
+    <div class="dialog-bottom">
+      <a href="../../#work">← Selected work</a>
+      <a href="../../assets/Ruslan-Botashev-CV.pdf?v=c760c6fb476e" download>Download CV ↓</a>
+      <a href="mailto:mail@ruslanbotashev.com">Discuss this work ↗</a>
+    </div>
+  </main>
+</body>
+</html>
