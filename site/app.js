@@ -131,6 +131,7 @@ enhance('Case studies', () => {
   const defaultTitle = document.title;
   let trigger = null;
   let skipHistoryOnClose = false;
+  let pendingReturnFocus = null;
   function render(key, source = null) {
     const item = cases[key];
     if (!Object.hasOwn(cases, key)) return false;
@@ -169,14 +170,23 @@ enhance('Case studies', () => {
   dialog.addEventListener('close', () => {
     document.body.classList.remove('dialog-open');
     document.title = defaultTitle;
-    trigger?.focus({ preventScroll: true });
-    if (skipHistoryOnClose) { skipHistoryOnClose = false; return; }
+    if (skipHistoryOnClose) { skipHistoryOnClose = false; trigger?.focus({ preventScroll: true }); return; }
     const url = new URL(location.href);
-    if (!url.searchParams.has('case')) return;
-    if (history.state?.rbCaseEntry) history.back();
-    else { url.searchParams.delete('case'); history.replaceState(history.state, '', url); }
+    if (!url.searchParams.has('case')) { trigger?.focus({ preventScroll: true }); return; }
+    if (history.state?.rbCaseEntry) { pendingReturnFocus = trigger; history.back(); }
+    else {
+      url.searchParams.delete('case');
+      history.replaceState(history.state, '', url);
+      trigger?.focus({ preventScroll: true });
+    }
   });
-  addEventListener('popstate', syncLocation);
+  addEventListener('popstate', () => {
+    syncLocation();
+    const target = pendingReturnFocus;
+    pendingReturnFocus = null;
+    // History traversal can restore document focus after popstate dispatch.
+    if (target) setTimeout(() => { if (!dialog.open && target.isConnected) target.focus({ preventScroll: true }); }, 0);
+  });
   syncLocation();
 });
 
