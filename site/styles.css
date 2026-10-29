@@ -273,3 +273,16 @@ html:not(.js) .copy-email{display:none}
 .timeline-work a{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:44px;padding:9px 0;font-size:14px;line-height:1.5}
 .timeline-work a:hover{text-decoration:underline;text-underline-offset:4px}
 .timeline-work a>span{flex-shrink:0}
+
+/* Compact child cases and navigation within longer stories. */
+.related-case-link{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:44px;padding:18px 0;font-size:14px;line-height:1.5}
+.related-case-link small{display:block;margin-bottom:5px;font:10px/1.6 var(--mono);letter-spacing:.045em;color:var(--muted)}
+.related-case-link:hover{text-decoration:underline;text-underline-offset:4px}
+.related-case-link>span:last-child{flex-shrink:0}
+.case-toc{margin:28px 0 40px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.case-toc>span{font:11px/1.6 var(--mono);text-transform:uppercase;letter-spacing:.045em;color:var(--muted)}
+.case-toc ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;list-style:none;margin:10px 0 0;padding:0}
+.case-toc a{display:flex;align-items:center;min-height:44px;padding:8px 0;font-size:14px;line-height:1.5;text-decoration:underline;text-underline-offset:4px}
+#case-content h3[id],#case-content h2[id]{scroll-margin-top:24px}
+#case-content p>a[data-case]{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:480px){.case-toc ul{grid-template-columns:1fr}}
