@@ -1,4 +1,4 @@
-import { cases } from './case-data.js?v=f93fd7af506a';
+import { cases } from './case-data.js?v=084a7194c924';
 import { initSystems } from './systems.js';
 
 const root = document.documentElement;
@@ -135,7 +135,8 @@ enhance('Case studies', () => {
   function render(key, source = null) {
     const item = cases[key];
     if (!Object.hasOwn(cases, key)) return false;
-    trigger = source || document.querySelector(`[data-case="${key}"]`);
+    if (source) trigger = source;
+    else if (!trigger?.isConnected) trigger = document.querySelector(`[data-case="${key}"]`);
     const project = trigger?.closest('[data-category]');
     if (project?.hidden) setProjectFilter('all');
     project?.classList.add('visible');
@@ -153,14 +154,27 @@ enhance('Case studies', () => {
     if (key && Object.hasOwn(cases, key)) render(key);
     else if (dialog.open) { skipHistoryOnClose = true; dialog.close(); }
   }
-  document.querySelectorAll('[data-case]').forEach(link => link.addEventListener('click', event => {
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    if (!render(link.dataset.case, link)) return;
+  document.addEventListener('click', event => {
+    const link = event.target.closest?.('a[data-case]');
+    if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const withinPreview = content.contains(link);
+    if (!render(link.dataset.case, withinPreview ? null : link)) return;
     event.preventDefault();
     const url = new URL(location.href);
     url.searchParams.set('case', link.dataset.case);
-    history.pushState({ ...history.state, rbCaseEntry: true }, '', url);
-  }));
+    // Related stories share one preview entry; Back and Close return to the page.
+    if (withinPreview) history.replaceState(history.state, '', url);
+    else history.pushState({ ...history.state, rbCaseEntry: true }, '', url);
+  });
+  content.addEventListener('click', event => {
+    const link = event.target.closest?.('.case-toc a[href^="#"]');
+    if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const heading = document.getElementById(link.getAttribute('href').slice(1));
+    if (!heading || !content.contains(heading)) return;
+    event.preventDefault();
+    heading.scrollIntoView({ block: 'start' });
+    heading.focus({ preventScroll: true });
+  });
   document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => {
     if (event.target !== dialog) return;

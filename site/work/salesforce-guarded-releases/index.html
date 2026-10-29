@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eaeae2">
+  <title>Guarded Releases for Salesforce Edge — Ruslan Botashev</title>
+  <meta name="description" content="Automate the repeated work. Keep release decisions tied to production health.">
+  <link rel="canonical" href="https://botashev.com/work/salesforce-guarded-releases/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Guarded Releases for Salesforce Edge — Ruslan Botashev">
+  <meta property="og:description" content="Automate the repeated work. Keep release decisions tied to production health.">
+  <meta property="og:url" content="https://botashev.com/work/salesforce-guarded-releases/">
+  <meta property="og:image" content="https://botashev.com/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","@id":"https://botashev.com/work/salesforce-guarded-releases/#case","headline":"Guarded Releases for Salesforce Edge","description":"Automate the repeated work. Keep release decisions tied to production health.","mainEntityOfPage":"https://botashev.com/work/salesforce-guarded-releases/","author":{"@id":"https://botashev.com/#person"}}</script>
+</head>
+<body class="case-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="../../" aria-label="Ruslan Botashev, home"><span class="brand-mark" aria-hidden="true">rb<span>↗</span></span><span>Ruslan<br>Botashev</span></a>
+    <a class="text-link" href="../../#work">← Selected work</a>
+  </header>
+  <main id="main">
+    <article id="case-content" aria-labelledby="case-title">
+      <p class="eyebrow">Salesforce / EdgeFlow release engineering</p>
+      <h1 id="case-title">Guarded releases<br>for Salesforce Edge.</h1>
+      <p class="case-lead">Automate the repeated work. Keep release decisions tied to production health.</p>
+      <h2>The risk behind every rollout</h2><p>Salesforce Edge is a tier-0 traffic entry point: a faulty rollout could disrupt Salesforce globally. Regional releases required repeated configuration and test-file pull requests, dashboard checks and manual progress tracking. I originated and implemented release automation as a major use case of <a data-case="edgeflow" href="../edgeflow/">EdgeFlow, the general-purpose automation platform I built for engineering operations</a>.</p><h2>From preparation to deployment</h2><p>I engineered the workflows to prepare releases across three repositories and multiple artifacts, trigger Jenkins builds at the end of a two-week sprint and wait for completion. Automation created Slack release threads and tracking canvases containing versions, status, change inventories and change-owner testing records.</p><p>Ready builds deployed automatically to development environments. Engineers tested their own changes before progression to pre-production.</p><h2>One release process, two deployment paths</h2><p>The orchestration covered 46 deployment groups across development, pre-production, canary and production regions. Separate workflows handled first-party Linux hosts running Docker Compose and public-cloud environments running Kubernetes. The release process coordinated both substrates while using the appropriate deployment workflow for each.</p><h2>Readiness came from operational evidence</h2><p>The system collected approximately 100 operational metrics and generated PDF reports with graphs. AI agents assessed release health and whether a rollout could proceed to the next region. Post-deployment checks compared metrics with immediate pre-deployment, prior-day and prior-week baselines.</p><p>AI health assessment, staged progression and human change-owner validation were distinct controls. Release status, reports and relevant pull requests were posted to the Slack thread, giving engineers a shared view of the work.</p><h2>Stop, observe, then continue</h2><p>If PagerDuty incidents appeared after deployment, automation stopped progression and notified the on-call engineer. During approximately 24-hour soak periods, it rechecked metrics and incidents every 20 minutes before further progression. Change-owner testing and on-call investigation remained part of the process.</p><p>I persisted release state in GitHub-hosted YAML, allowing workflows to update release progress and support two or three concurrent releases.</p><h2>The result</h2><div class="case-result"><p><strong>Elapsed rollout time decreased from four weeks to three.</strong></p><small>Automation took over repeated metric collection, checks and reporting. This is the release use case's outcome within EdgeFlow.</small></div><p>The work turned a release from repeated manual coordination into a shared, guarded operational process, with production health informing progression. <a data-case="edgeflow" href="../edgeflow/">Explore the EdgeFlow platform behind it</a>.</p>
+      <p class="case-tags">Release engineering · EdgeFlow · Docker Compose · Kubernetes · Production AI · Jenkins</p>
+      
+    </article>
+    <div class="dialog-bottom">
+      <a href="../../#work">← Selected work</a>
+      <a href="../../assets/Ruslan-Botashev-CV.pdf?v=bc68b4e3c583" download>Download CV ↓</a>
+      <a href="mailto:mail@ruslanbotashev.com">Discuss this work ↗</a>
+    </div>
+  </main>
+</body>
+</html>
